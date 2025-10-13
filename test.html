@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Hover Gallery</title>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+ul.results {
+  display: flex;
+  width: calc(80% - 2rem);
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+li.result {
+  flex: calc(0.1 + (var(--active-lerp, 0) * 1));
+  transition: flex 0.2s ease;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: all 0.2s ease;
+}
+
+ul.results:is(:hover, :focus-within) img {
+  opacity: calc(0.1 + (var(--active-lerp, 0) * 0.9));
+  filter: grayscale(calc(1 - var(--active-lerp, 0)));
+}
+
+:root {
+  --lerp-0: 1;
+  --lerp-1: 0.5787037;
+  --lerp-2: 0.2962963;
+  --lerp-3: 0.125;
+  --lerp-4: 0.037037;
+  --lerp-5: 0.0046296;
+  --lerp-6: 0;
+}
+
+a {
+  outline-offset: 4px;
+}
+
+li.result:is(:hover, :focus-within) {
+  --active-lerp: var(--lerp-0);
+  z-index: 7;
+}
+li.result:has(+ li.result:is(:hover, :focus-within)),
+li.result:is(:hover, :focus-within) + li.result {
+  --active-lerp: var(--lerp-1);
+  z-index: 6;
+}
+li.result:has(+ li.result + li.result:is(:hover, :focus-within)),
+li.result:is(:hover, :focus-within) + li.result + li.result {
+  --active-lerp: var(--lerp-2);
+  z-index: 5;
+}
+li.result:has(+ li.result + li.result + li.result:is(:hover, :focus-within)),
+li.result:is(:hover, :focus-within) + li.result + li.result + li.result {
+  --active-lerp: var(--lerp-3);
+  z-index: 4;
+}
+li.result:has(+ li.result + li.result + li.result + li.result:is(:hover, :focus-within)),
+li.result:is(:hover, :focus-within) + li.result + li.result + li.result + li.result {
+  --active-lerp: var(--lerp-4);
+  z-index: 3;
+}
+li.result:has(+ li.result + li.result + li.result + li.result + li.result:is(:hover, :focus-within)),
+li.result:is(:hover, :focus-within) + li.result + li.result + li.result + li.result + li.result {
+  --active-lerp: var(--lerp-5);
+  z-index: 2;
+}
+li.result:has(+ li.result + li.result + li.result + li.result + li.result + li.result:is(:hover, :focus-within)),
+li.result:is(:hover, :focus-within) + li.result + li.result + li.result + li.result + li.result + li.result {
+  --active-lerp: var(--lerp-6);
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+<ul class="results">
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=600&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1551978429-3dbfed5cacc9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1523437237164-d442d57cc3c9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1494625927555-6ec4433b1571?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1600240644455-3edc55c375fe?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1435732960391-11053ee5e6b6?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1518717202715-9fa9d099f58a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1484318571209-661cf29a69c3?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+  <li class="result"><a href="#"><img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=500&w=500" alt=""></a></li>
+</ul>
+</body>
+</html>
